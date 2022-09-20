@@ -1,4 +1,43 @@
-/app/extra/clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=ninja -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -G Ninja -S /home/dario/Documents/UTN/control_midi -B /home/dario/Documents/UTN/control_midi/cmake-build-debug
--- Configuring done
--- Generating done
--- Build files have been written to: /home/dario/Documents/UTN/control_midi/cmake-build-debug
+/app/extra/clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -G "CodeBlocks - Unix Makefiles" -S /home/dario/CLionProjects/control_midi -B /home/dario/CLionProjects/control_midi/cmake-build-debug
+-- The C compiler identification is GNU 11.3.0
+-- The CXX compiler identification is GNU 11.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Check if compiler accepts -pthread
+-- Check if compiler accepts -pthread - yes
+-- Found Threads: TRUE  
+-- Performing Test HAVE_STDATOMIC
+-- Performing Test HAVE_STDATOMIC - Success
+-- Found WrapAtomic: TRUE  
+-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so   
+-- Found WrapOpenGL: TRUE  
+-- Found XKB: /usr/lib/x86_64-linux-gnu/libxkbcommon.so (found suitable version "1.4.1", minimum required is "0.5.0") 
+-- Found WrapVulkanHeaders: /usr/include  
+CMake Error at CMakeLists.txt:16 (find_package):
+  Could not find a package configuration file provided by "nlohmann_json"
+  with any of the following names:
+
+    nlohmann_jsonConfig.cmake
+    nlohmann_json-config.cmake
+
+  Add the installation prefix of "nlohmann_json" to CMAKE_PREFIX_PATH or set
+  "nlohmann_json_DIR" to a directory containing one of the above files.  If
+  "nlohmann_json" provides a separate development package or SDK, be sure it
+  has been installed.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/dario/CLionProjects/control_midi/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "/home/dario/CLionProjects/control_midi/cmake-build-debug/CMakeFiles/CMakeError.log".

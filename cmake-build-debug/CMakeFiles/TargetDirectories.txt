@@ -1,5 +1,0 @@
-/home/dario/Documents/UTN/control_midi/cmake-build-debug/CMakeFiles/control_midi.dir
-/home/dario/Documents/UTN/control_midi/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/dario/Documents/UTN/control_midi/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/dario/Documents/UTN/control_midi/cmake-build-debug/CMakeFiles/control_midi_autogen_timestamp_deps.dir
-/home/dario/Documents/UTN/control_midi/cmake-build-debug/CMakeFiles/control_midi_autogen.dir
