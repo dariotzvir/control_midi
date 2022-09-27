@@ -1,4 +1,4 @@
-# Install script for directory: /home/dario/Documents/UTN/control_midi
+# Install script for directory: /home/dario/CLionProjects/control_midi
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/dario/Documents/UTN/control_midi/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/dario/CLionProjects/control_midi/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
