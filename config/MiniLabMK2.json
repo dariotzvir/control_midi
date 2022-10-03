@@ -1,0 +1,1278 @@
+{
+	"name": "MiniLab mkII",
+	"usbVendorId": 7285,
+	"manufacturerId": "00206B",
+	"familyId": "0200",
+	"productId": "42",
+	"projectId": 25,
+	"alternatives": [
+		{
+			"usbProductId": 8713,
+			"familyMemberId": "0402",
+			"sku": "minilab-mkII",
+			"firmwareUpdater": {
+				"name": "midiplus_packaged",
+				"updaterUsbVendorId": 7285,
+				"updaterUsbProductId": 8841,
+				"firmwareFilePattern": "*.mnl2",
+				"userRebootMessage": "Please unplug the device, then plug it again",
+				"extraParameters": {
+					"productCode": 63,
+					"productKey": [
+						90,
+						87,
+						110,
+						40,
+						60,
+						78,
+						80
+					]
+				}
+			}
+		},
+		{
+			"usbProductId": 649,
+			"familyMemberId": "0402",
+			"sku": "minilab-mkII",
+			"firmwareUpdater": {
+				"name": "midiplus_packaged",
+				"updaterUsbVendorId": 7285,
+				"updaterUsbProductId": 521,
+				"firmwareFilePattern": "*.mnl2",
+				"userRebootMessage": "Please unplug the device, then plug it again",
+				"extraParameters": {
+					"productCode": 63,
+					"productKey": [
+						90,
+						87,
+						110,
+						40,
+						60,
+						78,
+						80
+					]
+				}
+			}
+		}
+	],
+	"imagePath": "MiniLabMK2.png",
+	"templateExtension": ".minilabmk2",
+	"memories": 8,
+	"memoriesNonEditable": [
+		1
+	],
+	"memories_name": [
+		"Analog Lab",
+		"Memory 2",
+		"Memory 3",
+		"Memory 4",
+		"Memory 5",
+		"Memory 6",
+		"Memory 7",
+		"Memory 8 (Ableton Live)"
+	],
+	"is_working_memory": 0,
+	"force_store_recall_to_working_memory": 1,
+	"protocol": "arturia_v2",
+	"actions": [
+		"store",
+		"recall"
+	],
+	"firmwareFormat": "$3.$2.$1",
+	"minimalVersionRequired": "1.0.4.29",
+	"deviceGlobalParametersId": 64,
+	"fields": [
+		{
+			"id": 500,
+			"name": "Keyboard channel",
+			"paramId": 64,
+			"globalParamId": 6,
+			"type": "CHANNEL"
+		},
+		{
+			"id": 501,
+			"name": "Knob Acceleration",
+			"paramId": 64,
+			"globalParamId": 27,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "Slow (Off)",
+					"val": 0
+				},
+				{
+					"str": "Medium",
+					"val": 1
+				},
+				{
+					"str": "Fast",
+					"val": 2
+				}
+			]
+		},
+		{
+			"id": 502,
+			"name": "Key Velocity Curve",
+			"paramId": 64,
+			"globalParamId": 25,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "Linear",
+					"val": 0
+				},
+				{
+					"str": "Logarithmic",
+					"val": 1
+				},
+				{
+					"str": "Exponential",
+					"val": 2
+				},
+				{
+					"str": "Full",
+					"val": 3
+				}
+			]
+		},
+		{
+			"id": 503,
+			"name": "Pad Velocity Curve",
+			"paramId": 64,
+			"globalParamId": 26,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "Linear",
+					"val": 0
+				},
+				{
+					"str": "Logarithmic",
+					"val": 1
+				},
+				{
+					"str": "Exponential",
+					"val": 2
+				},
+				{
+					"str": "Full",
+					"val": 3
+				}
+			]
+		},
+		{
+			"id": 504,
+			"name": "Octave button blink",
+			"paramId": 64,
+			"globalParamId": 29,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "Off",
+					"val": 0
+				},
+				{
+					"str": "On",
+					"val": 127
+				}
+			]
+		},
+		{
+			"id": 505,
+			"name": "Pad off backlight",
+			"paramId": 64,
+			"globalParamId": 30,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "Off",
+					"val": 0
+				},
+				{
+					"str": "On",
+					"val": 127
+				}
+			]
+		},
+		{
+			"id": 7,
+			"name": "Channel",
+			"paramId": 2,
+			"type": "CHANNEL",
+			"list": [
+				{
+					"str": "Keyboard",
+					"val": 65
+				}
+			],
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						1,
+						4,
+						8,
+						9,
+						11,
+						12,
+						16
+					]
+				}
+			]
+		},
+		{
+			"id": 8,
+			"name": "CC Number",
+			"paramId": 3,
+			"type": "CC_NUM",
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						1,
+						8
+					]
+				}
+			]
+		},
+		{
+			"id": 9,
+			"name": "Min Value",
+			"paramId": 4,
+			"type": "RANGE",
+			"minValue": 0,
+			"maxValue": 127,
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						1
+					]
+				},
+				{
+					"paramId": 6,
+					"values": [
+						0
+					]
+				}
+			]
+		},
+		{
+			"id": 10,
+			"name": "Max Value",
+			"paramId": 5,
+			"type": "RANGE",
+			"minValue": 0,
+			"maxValue": 127,
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						1
+					]
+				},
+				{
+					"paramId": 6,
+					"values": [
+						0
+					]
+				}
+			]
+		},
+		{
+			"id": 37,
+			"name": "Min Value",
+			"comment": "used with Control and No option",
+			"paramId": 4,
+			"type": "RANGE",
+			"minValue": 0,
+			"maxValue": 127,
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						1
+					]
+				}
+			]
+		},
+		{
+			"id": 38,
+			"name": "Max Value",
+			"comment": "used with Control and No option",
+			"paramId": 5,
+			"type": "RANGE",
+			"minValue": 0,
+			"maxValue": 127,
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						1
+					]
+				}
+			]
+		},
+		{
+			"id": 11,
+			"name": "Mode",
+			"paramId": 1,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "Off",
+					"val": 0
+				},
+				{
+					"str": "Control",
+					"val": 1
+				},
+				{
+					"str": "NRPN/RPN",
+					"val": 4
+				}
+			]
+		},
+		{
+			"id": 12,
+			"name": "Mode",
+			"paramId": 1,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "Off",
+					"val": 0
+				},
+				{
+					"str": "MMC",
+					"val": 7
+				},
+				{
+					"str": "Switched Control",
+					"val": 8
+				},
+				{
+					"str": "MIDI Note",
+					"val": 9
+				},
+				{
+					"str": "Patch Change",
+					"val": 11
+				}
+			]
+		},
+		{
+			"id": 13,
+			"name": "Mode",
+			"paramId": 1,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "Off",
+					"val": 0
+				},
+				{
+					"str": "Control",
+					"val": 1
+				},
+				{
+					"str": "NRPN/RPN",
+					"val": 4
+				},
+				{
+					"str": "Aftertouch",
+					"val": 14
+				}
+			]
+		},
+		{
+			"id": 14,
+			"name": "Mode",
+			"paramId": 1,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "Off",
+					"val": 0
+				},
+				{
+					"str": "Pitch Bend",
+					"val": 16
+				}
+			]
+		},
+		{
+			"id": 15,
+			"name": "Mode",
+			"paramId": 1,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "Off",
+					"val": 0
+				},
+				{
+					"str": "Control",
+					"val": 1
+				},
+				{
+					"str": "Switched Control",
+					"val": 8
+				},
+				{
+					"str": "MIDI Note",
+					"val": 9
+				}
+			]
+		},
+		{
+			"id": 16,
+			"name": "Mode",
+			"paramId": 1,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "Off",
+					"val": 0
+				},
+				{
+					"str": "Switched Control",
+					"val": 8
+				},
+				{
+					"str": "MIDI Note",
+					"val": 9
+				}
+			]
+		},
+		{
+			"id": 20,
+			"name": "Option",
+			"paramId": 6,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "Absolute",
+					"val": 0
+				},
+				{
+					"str": "Relative #1",
+					"val": 1
+				},
+				{
+					"str": "Relative #2",
+					"val": 2
+				},
+				{
+					"str": "Relative #3",
+					"val": 3
+				}
+			],
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						1
+					]
+				}
+			]
+		},
+		{
+			"id": 21,
+			"name": "Option",
+			"paramId": 6,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "NRPN",
+					"val": 0
+				},
+				{
+					"str": "RPN",
+					"val": 1
+				}
+			],
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						4
+					]
+				}
+			]
+		},
+		{
+			"id": 22,
+			"name": "Option",
+			"paramId": 6,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "Toggle",
+					"val": 0
+				},
+				{
+					"str": "Gate",
+					"val": 1
+				}
+			],
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						8,
+						9
+					]
+				}
+			]
+		},
+		{
+			"id": 23,
+			"name": "Option",
+			"paramId": 6,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "Standard",
+					"val": 0
+				},
+				{
+					"str": "Hold",
+					"val": 1
+				}
+			],
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						16
+					]
+				}
+			]
+		},
+		{
+			"id": 25,
+			"name": "Data entry",
+			"paramId": 3,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "1:128 (coarse)",
+					"val": 0
+				},
+				{
+					"str": "1:64",
+					"val": 1
+				},
+				{
+					"str": "1:32",
+					"val": 2
+				},
+				{
+					"str": "1:16",
+					"val": 3
+				},
+				{
+					"str": "1:8",
+					"val": 4
+				},
+				{
+					"str": "1:4",
+					"val": 5
+				},
+				{
+					"str": "1:2",
+					"val": 6
+				},
+				{
+					"str": "1:1 (fine)",
+					"val": 7
+				}
+			],
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						4
+					]
+				}
+			]
+		},
+		{
+			"id": 26,
+			"name": "MMC",
+			"paramId": 6,
+			"type": "MMC",
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						7
+					]
+				}
+			]
+		},
+		{
+			"id": 27,
+			"name": "Off Value",
+			"paramId": 4,
+			"type": "RANGE",
+			"minValue": 0,
+			"maxValue": 127,
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						8
+					]
+				}
+			]
+		},
+		{
+			"id": 28,
+			"name": "On Value",
+			"paramId": 5,
+			"type": "RANGE",
+			"minValue": 0,
+			"maxValue": 127,
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						8
+					]
+				}
+			]
+		},
+		{
+			"id": 29,
+			"name": "Note",
+			"paramId": 3,
+			"type": "NOTE",
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						9
+					]
+				}
+			]
+		},
+		{
+			"id": 32,
+			"name": "Program Number",
+			"paramId": 3,
+			"type": "RANGE",
+			"minValue": 0,
+			"maxValue": 127,
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						11
+					]
+				}
+			]
+		},
+		{
+			"id": 33,
+			"name": "Bank LSB",
+			"paramId": 4,
+			"type": "RANGE",
+			"minValue": 0,
+			"maxValue": 127,
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						4,
+						11
+					]
+				}
+			]
+		},
+		{
+			"id": 34,
+			"name": "Bank MSB",
+			"paramId": 5,
+			"type": "RANGE",
+			"minValue": 0,
+			"maxValue": 127,
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						4,
+						11
+					]
+				}
+			]
+		},
+		{
+			"id": 35,
+			"name": "RPN/NRPN LSB",
+			"paramId": 4,
+			"type": "RANGE",
+			"minValue": 0,
+			"maxValue": 127,
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						4,
+						11
+					]
+				}
+			]
+		},
+		{
+			"id": 36,
+			"name": "RPN/NRPN MSB",
+			"paramId": 5,
+			"type": "RANGE",
+			"minValue": 0,
+			"maxValue": 127,
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						4,
+						11
+					]
+				}
+			]
+		},
+		{
+			"id": 50,
+			"name": "Color",
+			"paramId": 17,
+			"type": "LIST",
+			"list": [
+				{
+					"str": "No Color",
+					"val": 0
+				},
+				{
+					"str": "Red",
+					"val": 1
+				},
+				{
+					"str": "Blue",
+					"val": 16
+				},
+				{
+					"str": "Green",
+					"val": 4
+				},
+				{
+					"str": "Purple",
+					"val": 17
+				},
+				{
+					"str": "Cyan",
+					"val": 20
+				},
+				{
+					"str": "Yellow",
+					"val": 5
+				},
+				{
+					"str": "White",
+					"val": 127
+				}
+			],
+			"conditions": [
+				{
+					"paramId": 1,
+					"values": [
+						7,
+						8,
+						9,
+						11
+					]
+				}
+			]
+		}
+	],
+	"globalFields-show-only-when-connected": 1,
+	"globalFields": [
+		{
+			"group": "Global Parameter",
+			"fields": [
+				500,
+				501,
+				502,
+				503,
+				504
+			]
+		},
+		{
+			"group": "Pad Backlight",
+			"fields": [
+				505
+			]
+		}
+	],
+	"itemTypes": [
+		{
+			"id": "knob",
+			"fields": [
+				11,
+				20,
+				21,
+				7,
+				8,
+				9,
+				10,
+				35,
+				36,
+				25
+			],
+			"copy-txt": "Copy value to other knobs"
+		},
+		{
+			"id": "Button",
+			"fields": [
+				16,
+				22,
+				7,
+				29,
+				8,
+				27,
+				28
+			],
+			"copy-txt": "Copy value to other buttons"
+		},
+		{
+			"id": "pad",
+			"fields": [
+				12,
+				50,
+				22,
+				7,
+				26,
+				8,
+				27,
+				28,
+				29,
+				32,
+				33,
+				34,
+				9,
+				10
+			],
+			"copy-txt": "Copy value to other pads"
+		},
+		{
+			"id": "modwheel",
+			"fields": [
+				11,
+				21,
+				7,
+				8,
+				37,
+				38,
+				35,
+				36
+			]
+		},
+		{
+			"id": "pitchbend",
+			"fields": [
+				14,
+				23,
+				7
+			]
+		},
+		{
+			"id": "sustain",
+			"fields": [
+				16,
+				22,
+				7,
+				8,
+				9,
+				10,
+				27,
+				28,
+				29
+			]
+		}
+	],
+	"controls": [
+		{
+			"id": "knob1",
+			"items": [
+				{
+					"id": 48,
+					"name": "Knob 1",
+					"type": "knob"
+				},
+				{
+					"id": 50,
+					"name": "Knob 1 + Shift",
+					"type": "knob"
+				},
+				{
+					"id": 49,
+					"name": "Knob 1 switch",
+					"type": "Button"
+				}
+			]
+		},
+		{
+			"id": "knob2",
+			"items": [
+				{
+					"id": 1,
+					"name": "Knob 2",
+					"type": "knob"
+				}
+			]
+		},
+		{
+			"id": "knob3",
+			"items": [
+				{
+					"id": 2,
+					"name": "Knob 3",
+					"type": "knob"
+				}
+			]
+		},
+		{
+			"id": "knob4",
+			"items": [
+				{
+					"id": 9,
+					"name": "Knob 4",
+					"type": "knob"
+				}
+			]
+		},
+		{
+			"id": "knob5",
+			"items": [
+				{
+					"id": 11,
+					"name": "Knob 5",
+					"type": "knob"
+				}
+			]
+		},
+		{
+			"id": "knob6",
+			"items": [
+				{
+					"id": 12,
+					"name": "Knob 6",
+					"type": "knob"
+				}
+			]
+		},
+		{
+			"id": "knob7",
+			"items": [
+				{
+					"id": 13,
+					"name": "Knob 7",
+					"type": "knob"
+				}
+			]
+		},
+		{
+			"id": "knob8",
+			"items": [
+				{
+					"id": 14,
+					"name": "Knob 8",
+					"type": "knob"
+				}
+			]
+		},
+		{
+			"id": "knob9",
+			"items": [
+				{
+					"id": 51,
+					"name": "Knob 9",
+					"type": "knob"
+				},
+				{
+					"id": 53,
+					"name": "Knob 9 + Shift",
+					"type": "knob"
+				},
+				{
+					"id": 52,
+					"name": "Knob 9 switch",
+					"type": "Button"
+				}
+			]
+		},
+		{
+			"id": "knob10",
+			"items": [
+				{
+					"id": 3,
+					"name": "Knob 10",
+					"type": "knob"
+				}
+			]
+		},
+		{
+			"id": "knob11",
+			"items": [
+				{
+					"id": 4,
+					"name": "Knob 11",
+					"type": "knob"
+				}
+			]
+		},
+		{
+			"id": "knob12",
+			"items": [
+				{
+					"id": 10,
+					"name": "Knob 12",
+					"type": "knob"
+				}
+			]
+		},
+		{
+			"id": "knob13",
+			"items": [
+				{
+					"id": 5,
+					"name": "Knob 13",
+					"type": "knob"
+				}
+			]
+		},
+		{
+			"id": "knob14",
+			"items": [
+				{
+					"id": 6,
+					"name": "Knob 14",
+					"type": "knob"
+				}
+			]
+		},
+		{
+			"id": "knob15",
+			"items": [
+				{
+					"id": 7,
+					"name": "Knob 15",
+					"type": "knob"
+				}
+			]
+		},
+		{
+			"id": "knob16",
+			"items": [
+				{
+					"id": 8,
+					"name": "Knob 16",
+					"type": "knob"
+				}
+			]
+		},
+		{
+			"id": "modwheel",
+			"items": [
+				{
+					"id": 64,
+					"name": "Modulation",
+					"type": "modwheel"
+				}
+			]
+		},
+		{
+			"id": "pitchbend",
+			"items": [
+				{
+					"id": 65,
+					"name": "Pitch Bend",
+					"type": "pitchbend"
+				}
+			]
+		},
+		{
+			"id": "sustain_pedal",
+			"items": [
+				{
+					"id": 80,
+					"name": "Sustain Pedal",
+					"type": "sustain"
+				}
+			]
+		},
+		{
+			"id": "pad1",
+			"items": [
+				{
+					"id": 112,
+					"name": "Pad 1",
+					"type": "pad"
+				},
+				{
+					"id": 120,
+					"name": "Pad 9",
+					"type": "pad"
+				}
+			]
+		},
+		{
+			"id": "pad2",
+			"items": [
+				{
+					"id": 113,
+					"name": "Pad 2",
+					"type": "pad"
+				},
+				{
+					"id": 121,
+					"name": "Pad 10",
+					"type": "pad"
+				}
+			]
+		},
+		{
+			"id": "pad3",
+			"items": [
+				{
+					"id": 114,
+					"name": "Pad 3",
+					"type": "pad"
+				},
+				{
+					"id": 122,
+					"name": "Pad 11",
+					"type": "pad"
+				}
+			]
+		},
+		{
+			"id": "pad4",
+			"items": [
+				{
+					"id": 115,
+					"name": "Pad 4",
+					"type": "pad"
+				},
+				{
+					"id": 123,
+					"name": "Pad 12",
+					"type": "pad"
+				}
+			]
+		},
+		{
+			"id": "pad5",
+			"items": [
+				{
+					"id": 116,
+					"name": "Pad 5",
+					"type": "pad"
+				},
+				{
+					"id": 124,
+					"name": "Pad 13",
+					"type": "pad"
+				}
+			]
+		},
+		{
+			"id": "pad6",
+			"items": [
+				{
+					"id": 117,
+					"name": "Pad 6",
+					"type": "pad"
+				},
+				{
+					"id": 125,
+					"name": "Pad 14",
+					"type": "pad"
+				}
+			]
+		},
+		{
+			"id": "pad7",
+			"items": [
+				{
+					"id": 118,
+					"name": "Pad 7",
+					"type": "pad"
+				},
+				{
+					"id": 126,
+					"name": "Pad 15",
+					"type": "pad"
+				}
+			]
+		},
+		{
+			"id": "pad8",
+			"items": [
+				{
+					"id": 119,
+					"name": "Pad 8",
+					"type": "pad"
+				},
+				{
+					"id": 127,
+					"name": "Pad 16",
+					"type": "pad"
+				}
+			]
+		},
+		{
+			"id": "switchpad",
+			"displayed_on_test_only": 1,
+			"items": [
+				{
+					"id": 85,
+					"name": "switchpad",
+					"type": "undefined"
+				}
+			]
+		},
+		{
+			"id": "shift",
+			"displayed_on_test_only": 1,
+			"items": [
+				{
+					"id": 86,
+					"name": "shift",
+					"type": "undefined"
+				}
+			]
+		},
+		{
+			"id": "octm",
+			"displayed_on_test_only": 1,
+			"items": [
+				{
+					"id": 16,
+					"name": "octm",
+					"type": "undefined"
+				}
+			]
+		},
+		{
+			"id": "octp",
+			"displayed_on_test_only": 1,
+			"items": [
+				{
+					"id": 17,
+					"name": "octp",
+					"type": "undefined"
+				}
+			]
+		}
+	]
+}
