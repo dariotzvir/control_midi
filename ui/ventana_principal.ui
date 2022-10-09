@@ -4,7 +4,7 @@
     <comment/>
     <exportmacro/>
     <class>ventana_principal</class>
-    <widget class="QMainWindow" name="Ventana">
+    <widget class="QWidget" name="ventana_principal">
         <property name="geometry">
             <rect>
                 <x>0</x>
@@ -16,17 +16,24 @@
         <property name="windowTitle">
             <string>Ventana_principal</string>
         </property>
-        <widget class="QWidget" name="">
+        <widget class="QWidget" name="widget">
             <widget class="QWidget" name="verticalLayoutWidget">
                 <property name="geometry">
                     <rect>
-                        <x>10</x>
+                        <x>0</x>
                         <y>0</y>
-                        <width>391</width>
+                        <width>401</width>
                         <height>251</height>
                     </rect>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout"/>
+                <layout class="QVBoxLayout" name="verticalLayout">
+                    <item>
+                        <widget class="QComboBox" name="selector_color"/>
+                    </item>
+                    <item>
+                        <widget class="QPlainTextEdit" name="terminal"/>
+                    </item>
+                </layout>
             </widget>
         </widget>
         <widget class="QMenuBar" name="menubar">
@@ -35,7 +42,7 @@
                     <x>0</x>
                     <y>0</y>
                     <width>402</width>
-                    <height>23</height>
+                    <height>20</height>
                 </rect>
             </property>
             <widget class="QMenu" name="menuArchivo">
@@ -61,7 +68,6 @@
                 </property>
                 <addaction name="actionConsola"/>
                 <addaction name="separator"/>
-                <addaction name="actionPuerta"/>
             </widget>
             <addaction name="menuArchivo"/>
             <addaction name="menuApariencia"/>

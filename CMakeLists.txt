@@ -14,7 +14,7 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 add_executable(control_midi main.cpp
-        ui/ventana_principal.cpp ui/ventana_principal.hpp ui/ventana_principal.ui)
+        ui/ventana_principal.cpp ui/ventana_principal.h ui/ventana_principal.ui)
 target_link_libraries(control_midi
         Qt::Core
         Qt::Gui
