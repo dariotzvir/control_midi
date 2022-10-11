@@ -1,144 +1,297 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <author/>
-    <comment/>
-    <exportmacro/>
-    <class>ventana_principal</class>
-    <widget class="QWidget" name="ventana_principal">
-        <property name="geometry">
-            <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>402</width>
-                <height>300</height>
-            </rect>
-        </property>
-        <property name="windowTitle">
-            <string>Ventana_principal</string>
-        </property>
-        <widget class="QWidget" name="widget">
-            <widget class="QWidget" name="verticalLayoutWidget">
-                <property name="geometry">
-                    <rect>
-                        <x>0</x>
-                        <y>0</y>
-                        <width>401</width>
-                        <height>251</height>
-                    </rect>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout">
-                    <item>
-                        <widget class="QComboBox" name="selector_color"/>
-                    </item>
-                    <item>
-                        <widget class="QPlainTextEdit" name="terminal"/>
-                    </item>
-                </layout>
-            </widget>
-        </widget>
-        <widget class="QMenuBar" name="menubar">
-            <property name="geometry">
-                <rect>
-                    <x>0</x>
-                    <y>0</y>
-                    <width>402</width>
-                    <height>20</height>
-                </rect>
-            </property>
-            <widget class="QMenu" name="menuArchivo">
-                <property name="title">
-                    <string>Archivo</string>
-                </property>
-                <addaction name="actionNuevo"/>
-                <addaction name="actionGuardad"/>
-                <addaction name="actionGuardar_como"/>
-            </widget>
-            <widget class="QMenu" name="menuApariencia">
-                <property name="title">
-                    <string>Apariencia</string>
-                </property>
-                <addaction name="actionClaro"/>
-                <addaction name="actionOscuro"/>
-                <addaction name="separator"/>
-                <addaction name="actionArchivo"/>
-            </widget>
-            <widget class="QMenu" name="menuComunicacion">
-                <property name="title">
-                    <string>Comunicación</string>
-                </property>
-                <addaction name="actionConsola"/>
-                <addaction name="separator"/>
-            </widget>
-            <addaction name="menuArchivo"/>
-            <addaction name="menuApariencia"/>
-            <addaction name="menuComunicacion"/>
-        </widget>
-        <widget class="QStatusBar" name="statusbar"/>
-        <action name="actionNuevo">
-            <property name="text">
-                <string>Nuevo</string>
-            </property>
-            <property name="shortcut">
-                <string>Ctrl+N</string>
-            </property>
-        </action>
-        <action name="actionGuardad">
-            <property name="text">
-                <string>Guardad</string>
-            </property>
-            <property name="shortcut">
-                <string>Ctrl+N</string>
-            </property>
-        </action>
-        <action name="actionGuardar_como">
-            <property name="text">
-                <string>Guardar como</string>
-            </property>
-            <property name="shortcut">
-                <string>Ctrl+Shift+N</string>
-            </property>
-        </action>
-        <action name="actionClaro">
-            <property name="text">
-                <string>Claro</string>
-            </property>
-            <property name="shortcut">
-                <string>Ctrl+1</string>
-            </property>
-        </action>
-        <action name="actionOscuro">
-            <property name="text">
-                <string>Oscuro</string>
-            </property>
-            <property name="shortcut">
-                <string>Ctrl+2</string>
-            </property>
-        </action>
-        <action name="actionArchivo">
-            <property name="text">
-                <string>Archivo</string>
-            </property>
-            <property name="shortcut">
-                <string>Ctrl+3</string>
-            </property>
-        </action>
-        <action name="actionConsola">
-            <property name="checkable">
-                <bool>true</bool>
-            </property>
-            <property name="text">
-                <string>Consola</string>
-            </property>
-            <property name="shortcut">
-                <string>Ctrl+4</string>
-            </property>
-        </action>
-        <action name="actionPuerto">
-            <property name="text">
-                <string>Puerto</string>
-            </property>
-        </action>
+ <class>ventana_principal</class>
+ <widget class="QWidget" name="ventana_principal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Ventana principal</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>imágenes/midimaster.png</normaloff>imágenes/midimaster.png</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>1</number>
+   </property>
+   <property name="topMargin">
+    <number>1</number>
+   </property>
+   <property name="rightMargin">
+    <number>1</number>
+   </property>
+   <property name="bottomMargin">
+    <number>1</number>
+   </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="layout_controles">
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QComboBox" name="selector_color">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+         <horstretch>148</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>375</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>500</width>
+         <height>16777215</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="aplicar_cambios">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>75</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Aplicar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="0">
+    <widget class="QStatusBar" name="statusbar">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="baseSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
     </widget>
-    <pixmapfunction/>
-    <connections/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QPlainTextEdit" name="terminal">
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOn</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOn</enum>
+     </property>
+     <property name="placeholderText">
+      <string>Mensajes MIDI apareceran aquí:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QMenuBar" name="barra_menu">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <widget class="QMenu" name="menu_archivo">
+      <property name="title">
+       <string>Archivo</string>
+      </property>
+      <addaction name="action_nuevo"/>
+      <addaction name="action_guardad"/>
+      <addaction name="action_guardar_como"/>
+     </widget>
+     <widget class="QMenu" name="menu_apariencia">
+      <property name="title">
+       <string>Apariencia</string>
+      </property>
+      <addaction name="action_claro"/>
+      <addaction name="action_oscuro"/>
+      <addaction name="separator"/>
+      <addaction name="action_archivo"/>
+     </widget>
+     <widget class="QMenu" name="menu_comunicacion">
+      <property name="title">
+       <string>Comunicación</string>
+      </property>
+      <addaction name="action_consola"/>
+      <addaction name="separator"/>
+      <addaction name="actionLimpiar_consola"/>
+      <addaction name="separator"/>
+      <addaction name="actionRefrescar_puertos"/>
+      <addaction name="actionPuertos"/>
+     </widget>
+     <addaction name="menu_archivo"/>
+     <addaction name="menu_apariencia"/>
+     <addaction name="menu_comunicacion"/>
+    </widget>
+   </item>
+  </layout>
+  <action name="action_nuevo">
+   <property name="text">
+    <string>Nuevo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="action_guardad">
+   <property name="text">
+    <string>Guardad</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="action_guardar_como">
+   <property name="text">
+    <string>Guardar como</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+N</string>
+   </property>
+  </action>
+  <action name="action_claro">
+   <property name="text">
+    <string>Claro</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+1</string>
+   </property>
+  </action>
+  <action name="action_oscuro">
+   <property name="text">
+    <string>Oscuro</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+2</string>
+   </property>
+  </action>
+  <action name="action_archivo">
+   <property name="text">
+    <string>Archivo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+3</string>
+   </property>
+  </action>
+  <action name="action_consola">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Consola</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+4</string>
+   </property>
+  </action>
+  <action name="actionPuerto">
+   <property name="text">
+    <string>Puerto</string>
+   </property>
+  </action>
+  <action name="actionLimpiar_consola">
+   <property name="text">
+    <string>Limpiar consola</string>
+   </property>
+  </action>
+  <action name="actionRefrescar_puertos">
+   <property name="text">
+    <string>Refrescar puertos</string>
+   </property>
+  </action>
+  <action name="actionPuertos">
+   <property name="text">
+    <string>Puertos</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
 </ui>

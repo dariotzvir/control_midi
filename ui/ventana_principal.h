@@ -5,10 +5,13 @@
 #ifndef CONTROL_MIDI_VENTANA_PRINCIPAL_H
 #define CONTROL_MIDI_VENTANA_PRINCIPAL_H
 
+//Qt:
 #include <QWidget>
+#include <QString>
 
 
-QT_BEGIN_NAMESPACE
+
+QT_BEGIN_NAMESPACE //Genera solo CLion
 namespace Ui
 {
     class ventana_principal;
@@ -20,9 +23,19 @@ class ventana_principal : public QWidget
 Q_OBJECT
 
 public:
-    explicit ventana_principal(QWidget *parent = nullptr);
 
+    explicit ventana_principal(QWidget *parent = nullptr);
     ~ventana_principal() override;
+
+    //Terminal:
+    void limpiar_terminal();
+    void agregar_texto_terminal(const QString &texto);
+    void agregar_texto_terminal(const QString &texto, const QColor &color);
+    void mensaje_conectando_terminal();
+
+    //Temas:
+
+    //
 
 private:
     Ui::ventana_principal *ui;

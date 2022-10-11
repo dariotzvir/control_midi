@@ -18,3 +18,4 @@ ventana_principal::~ventana_principal()
 {
     delete ui;
 }
+
