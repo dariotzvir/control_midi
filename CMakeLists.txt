@@ -20,7 +20,7 @@ find_package(RtMidi REQUIRED)
 
 add_executable(control_midi main.cpp
         ui/ventana_principal.cpp ui/ventana_principal.h ui/ventana_principal.ui
-        MIDI/mensaje_midi.cpp MIDI/mensaje_midi.hpp)
+        MIDI/mensaje_midi.cpp MIDI/mensaje_midi.hpp MIDI/comunicacion.cpp MIDI/comunicacion.hpp)
 target_link_libraries(control_midi
         Qt::Core
         Qt::Gui

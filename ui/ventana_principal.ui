@@ -159,11 +159,17 @@
    </item>
    <item row="3" column="0">
     <widget class="QPlainTextEdit" name="terminal">
+     <property name="inputMethodHints">
+      <set>Qt::ImhNone</set>
+     </property>
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOn</enum>
      </property>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOn</enum>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
      </property>
      <property name="placeholderText">
       <string>Mensajes MIDI apareceran aquí:</string>
