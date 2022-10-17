@@ -4,15 +4,14 @@
 
 #include "mensaje_midi.hpp"
 
-
 namespace Formatear_Midi
 {
-    Mensaje::Mensaje(uint8_t status, std::vector<uint8_t> &datos):
-    _status(status), _datos(std::move(datos)){};
+    Mensaje::Mensaje(uint8_t status, std::vector<uint8_t> &datos, double dif_tiempo):
+    _status(status), _datos(std::move(datos)), _dif_tiempo(dif_tiempo){};
     [[nodiscard]] std::string_view Mensaje::status() const
     {
         const uint8_t status = (_status & 0b11110000);
-        return status_bytes[status];
+        return codigo_status.at(status); //codigo_status[status];
     }
     [[nodiscard]] uint8_t Mensaje::canal() const
     {
@@ -28,8 +27,18 @@ namespace Formatear_Midi
 
         if(status_aux == SYS_ESCLUSIVE)
         {
+            char const hex_chars[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+
+            r += hex_chars[ ( _status & 0xF0 ) >> 4 ];
+            r += hex_chars[ ( _status & 0x0F ) >> 0 ];
+            r += " ";
+
             for(uint8_t dato: _datos)
-                r += std::to_string(dato);
+            {
+                r += hex_chars[ ( dato & 0xF0 ) >> 4 ];
+                r += hex_chars[ ( dato & 0x0F ) >> 0 ];
+                r += " ";
+            }
         }
 
         else if(status_aux == CTRL_CHANGE)
@@ -80,5 +89,18 @@ namespace Formatear_Midi
     [[nodiscard]] uint16_t Mensaje::formatear_pitch() const
     {
         return _datos[0]  | (_datos[1]  << 7);
+    }
+
+    [[nodiscard]] double Mensaje::dif_tiempo() const
+    {
+        return _dif_tiempo;
+    }
+    [[nodiscard]] uint8_t  Mensaje::status_bytes() const
+    {
+        return _status;
+    }
+    [[nodiscard]] std::vector<uint8_t> Mensaje::data_bytes() const
+    {
+        return _datos;
     }
 };

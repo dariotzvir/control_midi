@@ -52,9 +52,12 @@
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>40</width>
+         <width>1</width>
          <height>10</height>
         </size>
        </property>
@@ -70,7 +73,7 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>375</width>
+         <width>250</width>
          <height>0</height>
         </size>
        </property>
@@ -79,6 +82,38 @@
          <width>500</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="currentText">
+        <string/>
+       </property>
+       <property name="placeholderText">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>5</width>
+         <height>5</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="selector_memoria">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>8</number>
        </property>
       </widget>
      </item>
@@ -125,9 +160,12 @@
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>40</width>
+         <width>1</width>
          <height>10</height>
         </size>
        </property>
@@ -135,7 +173,7 @@
      </item>
     </layout>
    </item>
-   <item row="4" column="0">
+   <item row="7" column="0">
     <widget class="QStatusBar" name="statusbar">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -157,24 +195,72 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
-    <widget class="QPlainTextEdit" name="terminal">
-     <property name="inputMethodHints">
-      <set>Qt::ImhNone</set>
-     </property>
-     <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOn</enum>
-     </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOn</enum>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-     <property name="placeholderText">
-      <string>Mensajes MIDI apareceran aquí:</string>
-     </property>
-    </widget>
+   <item row="4" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="boton_agrandar">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>10</width>
+         <height>10</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="baseSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>+</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="boton_reducir">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="0" column="0">
     <widget class="QMenuBar" name="barra_menu">
@@ -184,14 +270,6 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <widget class="QMenu" name="menu_archivo">
-      <property name="title">
-       <string>Archivo</string>
-      </property>
-      <addaction name="action_nuevo"/>
-      <addaction name="action_guardad"/>
-      <addaction name="action_guardar_como"/>
-     </widget>
      <widget class="QMenu" name="menu_apariencia">
       <property name="title">
        <string>Apariencia</string>
@@ -205,16 +283,43 @@
       <property name="title">
        <string>Comunicación</string>
       </property>
+      <widget class="QMenu" name="menuPuertos">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="title">
+        <string>Puertos</string>
+       </property>
+       <addaction name="separator"/>
+      </widget>
       <addaction name="action_consola"/>
       <addaction name="separator"/>
       <addaction name="actionLimpiar_consola"/>
       <addaction name="separator"/>
       <addaction name="actionRefrescar_puertos"/>
-      <addaction name="actionPuertos"/>
+      <addaction name="menuPuertos"/>
      </widget>
-     <addaction name="menu_archivo"/>
      <addaction name="menu_apariencia"/>
      <addaction name="menu_comunicacion"/>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QPlainTextEdit" name="terminal">
+     <property name="inputMethodHints">
+      <set>Qt::ImhNone</set>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="placeholderText">
+      <string>Mensajes MIDI apareceran aquí:</string>
+     </property>
     </widget>
    </item>
   </layout>
@@ -286,18 +391,27 @@
    <property name="text">
     <string>Limpiar consola</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+5</string>
+   </property>
   </action>
   <action name="actionRefrescar_puertos">
    <property name="text">
     <string>Refrescar puertos</string>
    </property>
   </action>
-  <action name="actionPuertos">
+  <action name="actionasdasd">
    <property name="text">
-    <string>Puertos</string>
+    <string>asdasd</string>
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>terminal</tabstop>
+  <tabstop>selector_color</tabstop>
+  <tabstop>selector_memoria</tabstop>
+  <tabstop>aplicar_cambios</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

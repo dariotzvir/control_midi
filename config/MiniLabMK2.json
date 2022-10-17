@@ -945,6 +945,7 @@
 			"items": [
 				{
 					"id": 9,
+
 					"name": "Knob 4",
 					"type": "knob"
 				}
@@ -1116,8 +1117,7 @@
 				{
 					"id": 112,
 					"name": "Pad 1",
-					"type": "pad",
-
+					"type": "pad"
 				},
 				{
 					"id": 120,

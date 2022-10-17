@@ -16,7 +16,6 @@
 
 namespace Formatear_Midi
 {
-    using status_types = std::map<const uint8_t, std::string_view>;
     static constexpr std::string_view NOTE_OFF       = "Note Off        ";
     static constexpr std::string_view NOTE_ON        = "Note On         ";
     static constexpr std::string_view KEY_PRESSURE   = "Key Pressure    ";
@@ -25,7 +24,9 @@ namespace Formatear_Midi
     static constexpr std::string_view CHAN_PRESSURE  = "Channel pressure";
     static constexpr std::string_view PITCH_BEND     = "Pitch Bend      ";
     static constexpr std::string_view SYS_ESCLUSIVE  = "System exclusive";
-    static status_types status_bytes =
+
+    using status_type = std::map<const uint8_t, std::string_view>;
+    static const status_type codigo_status =
     {
         {0x80, NOTE_OFF} ,
         {0x90, NOTE_ON},
@@ -41,14 +42,19 @@ namespace Formatear_Midi
     {
         const uint8_t _status;
         const std::vector<uint8_t> _datos;
+        const double _dif_tiempo;
 
         [[nodiscard]] std::string      hex_a_nota() const;
         [[nodiscard]] uint16_t         formatear_pitch() const;
     public:
-        explicit Mensaje(uint8_t status, std::vector<uint8_t> &datos);
+        //explicit Mensaje(const Mensaje &copia);
+        explicit Mensaje(uint8_t status, std::vector<uint8_t> &datos, double dif_tiempo=0);
         [[nodiscard]] std::string_view status() const;
         [[nodiscard]] uint8_t          canal() const;
         [[nodiscard]] std::string      string() const;
+        [[nodiscard]] double           dif_tiempo() const;
+        [[nodiscard]] uint8_t          status_bytes() const;
+        [[nodiscard]] std::vector<uint8_t> data_bytes() const;
     };
 
 }

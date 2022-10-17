@@ -5,19 +5,23 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
-
 #set(CMAKE_PREFIX_PATH "/home/dario/Qt/6.2.4/gcc_64/lib/cmake")
+
+include_directories("MIDI")
+include_directories("ui")
+add_subdirectory("MIDI")
+add_subdirectory("ui")
 
 find_package(Qt6 COMPONENTS
         Core
         Gui
         Widgets
         REQUIRED)
+
 set(Boost_INCLUDE_DIR "/usr/include")
 set(Boost_LIBRARY_DIR "/usr/lib64")
 find_package(Boost COMPONENTS json REQUIRED)
 find_package(RtMidi REQUIRED)
-
 add_executable(control_midi main.cpp
         ui/ventana_principal.cpp ui/ventana_principal.h ui/ventana_principal.ui
         MIDI/mensaje_midi.cpp MIDI/mensaje_midi.hpp MIDI/comunicacion.cpp MIDI/comunicacion.hpp)
