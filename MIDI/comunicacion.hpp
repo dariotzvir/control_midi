@@ -20,10 +20,14 @@
 #include <RtMidi.h>
 #include "mensaje_midi.hpp"
 
+/*
+ * Esta clase hereda de QObject para tener las utilidades de las señales de Qt,
+ * también para poder crear el hilo de comunicación
+ */
 class Comunicacion: public QObject
 {
     Q_OBJECT //Macro que añade variables básicas del QObject
-    bool continuar_proceso;
+    bool continuar_proceso; //Flag global para el proceso
     const uint _puerto;
     std::queue<Formatear_Midi::Mensaje> _cola_ingreso;
 
@@ -39,6 +43,10 @@ signals:
     void msj_midi(Formatear_Midi::Mensaje msj);
 };
 
+/*
+ * Esta clase se usa para listar los dispositivos que aparecen cuando apretás
+ * refrescar puertos
+ */
 class Dispositivo
 {
 public:
@@ -48,8 +56,7 @@ public:
     puerto(puerto_arg), nombre(nombre_arg)
     {};
 };
-
+//Función extra para obtener los dispositivos conectados actualmente
 std::vector<Dispositivo> listar_puertos();
-
 
 #endif //CONTROL_MIDI_COMUNICACION_HPP

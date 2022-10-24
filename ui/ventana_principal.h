@@ -22,7 +22,11 @@
 #include "mensaje_midi.hpp"
 #include "comunicacion.hpp"
 
-QT_BEGIN_NAMESPACE //Genera solo CLion
+/*
+ * Este namespace lo genera solo Qt Creator para poder luego vincular lo que se
+ * compila desde el designer.
+ */
+QT_BEGIN_NAMESPACE
 namespace Ui
 {
     class ventana_principal;
@@ -32,7 +36,7 @@ QT_END_NAMESPACE
 class ventana_principal : public QWidget
 {
 Q_OBJECT
-    Ui::ventana_principal *ui;
+    Ui::ventana_principal *ui; //Esto se genera solo para vincular lo compilado en UI
     std::vector<Dispositivo> _lista_puertos;
     QThread *hilo;
     Comunicacion *proceso_comunicacion;
@@ -47,7 +51,7 @@ public slots:
     void recibir_msj_midi(Formatear_Midi::Mensaje msj);
     void limpiar_terminal();
     void activar_terminal(bool flag);
-    void validar_comando (int index_lista);
+    void mandar_comando (int index_lista);
     void agrandar_fuente();
     void achicar_fuente();
 public:
@@ -56,25 +60,22 @@ public:
     void agregar_texto_terminal     (const QString &texto, const QColor &color);
     void mensaje_conectando_terminal(const QString &nombre);
 
-    //Temas:
-public slots:
-    void tema_claro ();
-    void tema_oscuro();
-
     //Barra de estado:
     void dispositivo_conectado   (const QString &nombre);
     void dispositivo_desconectado();
-    void dispositivo_fallo_con   (const QString &nombre);
     void cambiando_configuracion (const QString &nombre);
     void mensaje_barra_estado    (const QString msj);
 
     //ComboBox:
+    /*
+     * ComboBox es la lista desplegable desde la que se seleccionan los colores
+     */
     void llenar_colores(int id, std::vector<std::pair<std::string, int>> lista_colores);
     void activar_lista_colores(bool flag);
     void llenar_pads(const std::vector<int> &pads);
 
     //Puertos:
-    void levantar_hilo  (uint puerto);
+    void levantar_hilo  (uint puerto); //Esta función creará el hilo de comunicación
 public slots:
     void buscar_puertos ();
     void conectar_puerto(QAction *accion);

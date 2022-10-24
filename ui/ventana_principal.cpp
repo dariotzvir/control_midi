@@ -14,14 +14,17 @@ QWidget(parent), ui(new Ui::ventana_principal)
 {
     hilo = nullptr;
     proceso_comunicacion = nullptr;
-    ui->setupUi(this);
+    ui->setupUi(this); //Generado por Qt para que arranque la UI
 
+    /*
+     * Se vinculan todas las señales que se necesitaran para la ejecución
+     */
     connect(ui->actionLimpiar_consola, &QAction::triggered,
             this, &ventana_principal::limpiar_terminal);
     connect(ui->action_consola, &QAction::triggered,
             this, &ventana_principal::activar_terminal);
     connect(ui->aplicar_cambios, &QPushButton::clicked,
-            this, &ventana_principal::validar_comando);
+            this, &ventana_principal::mandar_comando);
     connect(ui->actionRefrescar_puertos, &QAction::triggered,
             this, &ventana_principal::buscar_puertos);
     connect(ui->boton_reducir, &QPushButton::pressed,
@@ -34,6 +37,9 @@ QWidget(parent), ui(new Ui::ventana_principal)
     ui->menuPuertos->setEnabled(false);
     ui->menuPuertos->setTearOffEnabled(false);
 
+    /*
+     * Crea los atajos de teclado y los vincula a la función que agranda al texto
+     */
     auto *atajo_mas = new QShortcut(QKeySequence(tr("Ctrl++", "Agrandar texto")),
                                  this);
     auto *atajo_menos = new QShortcut(QKeySequence(tr("Ctrl+-", "Achicar texto")),
@@ -49,6 +55,9 @@ ventana_principal::~ventana_principal()
     delete hilo;
     delete proceso_comunicacion;
 }
+/*
+ * Recibe desde el hilo los mensajes midi del teclado
+ */
 void ventana_principal::recibir_msj_midi(Formatear_Midi::Mensaje msj)
 {
     QString str_msj = msj.string().c_str();
@@ -56,35 +65,48 @@ void ventana_principal::recibir_msj_midi(Formatear_Midi::Mensaje msj)
 }
 void ventana_principal::limpiar_terminal()
 {
-    ui->terminal->clear();
-    ui->terminal->clearFocus();
+    ui->terminal->clear(); //Esto borra el texto
+    ui->terminal->clearFocus();  //Esto borra el cursor de la terminal
 }
 void ventana_principal::activar_terminal(bool flag)
 {
     ui->terminal->setEnabled(flag);
     limpiar_terminal();
 }
-void ventana_principal::validar_comando(int index_lista)
+/*
+ * Esta función manda los comandos de cambiar el color al hilo para que
+ * luego lleguen al teclado, todos los números hexadecimales (los que empiezan
+ * con 0x...) son variables propias del teclado para que funcionen
+ */
+void ventana_principal::mandar_comando(int index_lista)
 {
+    //Obtiene desde la lista desplegable lo que está seleccionado actualmente
     QString opcion_seleccionada = ui->selector_color->currentText();
-    if(opcion_seleccionada.isEmpty())
+    if(opcion_seleccionada.isEmpty()) //Si es inválida retorna
     {
         mensaje_barra_estado("Nada seleccionado");
         return;
     }
+    /*
+     * Verifica que el hilo esté corriendo
+     */
     if(!hilo->isRunning())
     {
         mensaje_barra_estado("No hay dispositivo conectado");
         return;
     }
+
+    //Esto coloca en la barra de estado inferior el siguiente mensaje
     cambiando_configuracion("Cambiando luces a " + opcion_seleccionada);
     uint param_midi = ui->selector_color->currentData().toUInt();
     uint memoria = ui->selector_memoria->value();
 
+    //Este mensaje indica al teclado de que se va a cambiar una de sus memorias
     std::vector<uint8_t> data_bytes = {0xF0, 0x7E, 0x7F, 0x06, uint8_t(memoria), 0xF7};
     auto iniciar_cmd = Formatear_Midi::Mensaje(0xF0, data_bytes);
     proceso_comunicacion->enviar_comando(iniciar_cmd);
 
+    //Manda para todos los pads de los colores el mismo color al hilo
     for(int id_pad: _lista_pads)
     {
         std::vector<uint8_t> data_bytes =
@@ -96,14 +118,21 @@ void ventana_principal::validar_comando(int index_lista)
         auto cmd = Formatear_Midi::Mensaje(0xF0, data_bytes);
         proceso_comunicacion->enviar_comando(cmd);
     }
+    //Este mensaje es para que termine la configuración
     data_bytes = {0xF0, 0x00, 0x20, 0x6B, 0x7F, 0x42, 0x02, 0x00, 0x40, 0x1E, 0x7F, 0xF7};
     auto refrescar_luces = Formatear_Midi::Mensaje(0xF0, data_bytes);
     proceso_comunicacion->enviar_comando(refrescar_luces);
 
+    //Este cambia a la memoria que acabamos de configurar
     data_bytes = {0xF0, 0x00, 0x20, 0x6B, 0x7F, 0x42, 0x06, uint8_t(memoria), 0xF7};
     auto terminar_cmd = Formatear_Midi::Mensaje(0xF0, data_bytes);
     proceso_comunicacion->enviar_comando(terminar_cmd);
 }
+/*
+ * Estas tres funciones cambian el tamaño de la fuente, la última primero ve la
+ * fuente actual que tiene la terminal, verifica que no sea muy grande o muy chica
+ * y la vuelve a settear
+ */
 void ventana_principal::agrandar_fuente()
 {
     cambiar_fuente(1);
@@ -122,6 +151,10 @@ void ventana_principal::cambiar_fuente(int cambio)
 
     ui->terminal->setFont(copia);
 };
+/*
+ * Al formatear el texto como HTML la terminal peuede mostrar texto con color,
+ * está la opción pero solo se usa el blanco en este caso
+ */
 void ventana_principal::agregar_texto_terminal(const QString &texto)
 {
     agregar_texto_terminal(texto, QColor(255, 255, 255));
@@ -165,11 +198,6 @@ void ventana_principal::dispositivo_desconectado()
     const QString msj_desconexion = "Dispositivo desconectado";
     mensaje_barra_estado(msj_desconexion);
 }
-void ventana_principal::dispositivo_fallo_con(const QString &nombre)
-{
-    const QString msj_fallo = "Dispositivo: " + nombre + " fallo al conectar";
-    mensaje_barra_estado(msj_fallo);
-}
 void ventana_principal::cambiando_configuracion(const QString &nombre)
 {
     const QString msj = "Configurando: " + nombre;
@@ -189,7 +217,15 @@ void ventana_principal::levantar_hilo(uint puerto)
     }
     hilo = new QThread();
     proceso_comunicacion = new Comunicacion(puerto);
+    //Esta función marca al programa que ese objeto correrá en otro hilo
     proceso_comunicacion->moveToThread(hilo);
+    /*
+     * Conecta varias señales para que el hilo funcione.
+     * Las más importantes son las de started, que marca que cuando el hilo
+     * para que se ejecute el loop del objeto
+     * y finished que marca al hilo que el objeto terminó su loop
+     * para que el hilo se pare y no consuma más recursos.
+     */
     connect(hilo, &QThread::started,
             proceso_comunicacion, &Comunicacion::process);
     connect(proceso_comunicacion, &Comunicacion::finished,
@@ -232,14 +268,4 @@ void ventana_principal::conectar_puerto(QAction *accion)
     dispositivo_conectado(nombre);
     levantar_hilo(puerto);
     activar_lista_colores(true);
-
-}
-
-void ventana_principal::tema_claro ()
-{
-    this->setStyle(QStyleFactory::create("adwaita"));
-}
-void ventana_principal::tema_oscuro()
-{
-    this->setStyle(QStyleFactory::create("adwaita-dark"));
 }

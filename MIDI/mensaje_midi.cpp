@@ -90,15 +90,6 @@ namespace Formatear_Midi
     {
         return _datos[0]  | (_datos[1]  << 7);
     }
-
-    [[nodiscard]] double Mensaje::dif_tiempo() const
-    {
-        return _dif_tiempo;
-    }
-    [[nodiscard]] uint8_t  Mensaje::status_bytes() const
-    {
-        return _status;
-    }
     [[nodiscard]] std::vector<uint8_t> Mensaje::data_bytes() const
     {
         return _datos;
